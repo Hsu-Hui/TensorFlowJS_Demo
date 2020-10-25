@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Load TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+
+
+    <!-- Place your code in the script tag below. You can also use an external .js file -->
+ 
+</head>
+
+<body>
+    <div id="liveView" class="camView">
+        <button id="webcamButton">Enable Webcam</button>
+        <video id="webcam" autoplay width="640" height="480"></video>
+    </div>
+    <script>
+        const model = await tf.loadLayersModel('~/Model/model.json');
+        const imageScaleFactor = 0.50;
+
+        const flipHorizontal = false;
+
+        const outputStride = 16;
+
+        // const imageElement = document.getElementById('cat');
+
+        // load the posenet model
+        const example = tf.browser.fromPixels(webcamElement).print();  // for example
+        const prediction = model.predict(example);
+        console.log(prediction);
+    </script>
+</body>
+</html>
